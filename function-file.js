@@ -1,5 +1,7 @@
 /* global Office */
-Office.onReady(() => {});
+Office.onReady(() => {
+  console.log("SynqUp build 2025-08-13-1"); // <-- change this each time you publish
+});
 
 Office.actions.associate("onAppointmentSendHandler", onAppointmentSendHandler);
 
