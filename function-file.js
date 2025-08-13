@@ -1,11 +1,9 @@
 /* global Office */
-Office.onReady(() => {
-  console.log("SynqUp build 2025-08-13-1"); // <-- change this each time you publish
-});
+Office.initialize = () => {
+  console.log("SynqUp build 2025-08-13-2");
+};
 
-Office.actions.associate("onAppointmentSendHandler", onAppointmentSendHandler);
-
-async function onAppointmentSendHandler(event) {
+function synqupOnSend(event) {
   try {
     event.completed({
       allowEvent: false,
@@ -14,4 +12,8 @@ async function onAppointmentSendHandler(event) {
   } catch (e) {
     event.completed({ allowEvent: true });
   }
+}
+
+if (Office.actions && Office.actions.associate) {
+  Office.actions.associate("synqupOnSend", synqupOnSend);
 }
